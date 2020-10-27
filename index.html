@@ -1,237 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
-</head>
-<style>
-    .calculatorBody {
-        display: flex;
-        flex-wrap: wrap;
-        width: 400px;
-        height: 700px;
-        border-radius: 10px;
-        border: solid 1px grey;
-        border-collapse: collapse;
-        box-sizing: border-box;
-        align-items: flex-start;
-    }
+  </head>
+  <style>
 
-    .calculatorTop {
-        width: 100%;
-        height: 50px;
-        border-collapse: collapse;
-        box-sizing: border-box;
-    }
-
-    .calculatorTop>.powerbutton {
-        width: 25px;
-        height: 25px;
-        color: #ff8800;
-        background-color: #d3dbe9;
-        border-radius: 50%;
-        text-align: center;
-        margin-top: 9px;
-        margin-left: 9px;
-        padding: 3px;
-        /* background: #d3dbe9; */
-    }
-
-    .calculatorDisplay {
-        width: 100%;
-        height: 130px;
-        margin-bottom: 20px;
-        background-color: rgb(0, 0, 0);
-        border-collapse: collapse;
-        box-sizing: border-box;
-    }
-
-    @font-face {
-        font-family: "digi";
-        src: url(/Fonts/CursedTimerUlil-Aznm.ttf);
-    }
-
-    .calculatorDisplay>p {
-        width: 400px;
-        margin-top: 48px;
-        margin-bottom: auto;
-        font-family: "digi";
-        font-size: xx-large;
-        color: rgb(212, 66, 66);
-        text-align: center;
-        justify-content: center;
-        word-wrap: break-word;
-    }
-
-    .calculatorRow {
-        width: 100%;
-        height: 100px;
-        box-sizing: border-box;
-        border-collapse: collapse;
-    }
-
-    button {
-        outline: none;
-        font-size: x-large;
-        text-decoration: none;
-        background: #e6e9ee;
-        color: rgb(59, 36, 36);
-        width: 80px;
-        height: 80px;
-        margin: 8px;
-        border-radius: 50%;
-        text-align: center;
-        vertical-align: middle;
-        transition: .4s;
-        border: none;
-    }
-
-    .button0 {
-        width: 180px;
-        border-radius: 40px;
-    }
-
-    button:hover {
-        background: #668ad8;
-    }
-
-    .rowColorGrey {
-        background: #d3dbe9;
-    }
-
-    .columnColor {
-        background: #ff8800;
-        color: white;
-    }
-
-    .rowColorGrey:hover,
-    .columnColor:hover {
-        background: #e9ba3a;
-    }
-
-    .columnColor:focus {
-        background: white;
-        color: #ff8800;
-    }
-</style>
-
-<body>
-    <div class="calculatorBody">
-
-        <div class="calculatorTop">
-            <i class="powerbutton lni lni-power-switch" onclick="powerOn()"></i>
-        </div>
-
-        <div class="calculatorDisplay">
-            <p id="display"></p>
-        </div>
-
-        <div class="calculatorRow">
-            <button onclick="reset()" class="rowColorGrey ac" id="ac">ac</button>
-            <button onclick="plusMinus()" class="rowColorGrey" id="">+/-</button>
-            <button onclick="onClick(this)" class="rowColorGrey" id="">%</button>
-            <button onclick="onClick(this)" class=" columnColor" id="">/</button>
-        </div>
-
-        <div class="calculatorRow">
-            <button onclick="onClick(this)" id="button7">7</button>
-            <button onclick="onClick(this)" id="button8">8</button>
-            <button onclick="onClick(this)" id="button9">9</button>
-            <button onclick="onClick(this)" class="columnColor" id="">*</button>
-        </div>
-
-        <div class="calculatorRow">
-            <button onclick="onClick(this)" id="button4">4</button>
-            <button onclick="onClick(this)" id="button5">5</button>
-            <button onclick="onClick(this)" id="button6">6</button>
-            <button onclick="onClick(this)" class="columnColor" id="">-</button>
-        </div>
-
-        <div class="calculatorRow">
-            <button onclick="onClick(this)" id="button1">1</button>
-            <button onclick="onClick(this)" id="button2">2</button>
-            <button onclick="onClick(this)" id="button3">3</button>
-            <button onclick="onClick(this)" class="columnColor" id="">+</button>
-        </div>
-
-        <div class="calculatorRow">
-            <button onclick="onClick(this)" class="button0" id="">0</button>
-            <button onclick="onClick(this)" id="">.</button>
-            <button onclick="calculate()" class="columnColor" id="">=</button>
-        </div>
-    </div>
-
-</body>
-<script>
-    console.log(document.getElementById("display").innerHTML);
-
-    function powerOn() {
-        if (document.getElementById("display").innerHTML === "") {
-            document.getElementById("display").innerHTML = "0";
-        } else {
-            document.getElementById("display").innerHTML = "";
-            y = "";
-        }
-    }
-    let y = "";
-
-    function onClick(element) {
-        document.getElementById('ac').innerHTML = 'c';
-        y = y + element.innerHTML;
-        document.getElementById("display").innerHTML = y;
-    }
-
-    function calculate() {
-
-        try {
-            let answer = eval(y);
-            // console.log(answer);
-            let x = +(Math.round(answer + "e+2") + "e-2");
-            y = x;
-            document.getElementById("display").innerHTML = x;
-        } catch (e) {
-            if (y.charAt(y.length - 1) == "+") {
-                let splicedAnswer = y.slice(0, (y.length - 1));
-                let jsMathAnswer = y.concat(splicedAnswer);
-                y = eval(jsMathAnswer);
-                document.getElementById("display").innerHTML = eval(jsMathAnswer);
-
-            } else if (y.charAt(y.length - 1) == "*") {
-                let splicedAnswer = y.slice(0, (y.length - 1));
-                let jsMathAnswer = y.concat(splicedAnswer);
-                y = eval(jsMathAnswer);
-                document.getElementById("display").innerHTML = eval(jsMathAnswer);
-
-            } else if (y.charAt(y.length - 1) == "/") {
-                let splicedAnswer = y.slice(0, (y.length - 1));
-                let jsMathAnswer = y.concat(splicedAnswer);
-                y = eval(jsMathAnswer);
-                document.getElementById("display").innerHTML = eval(jsMathAnswer);
-
-            } else if (y.charAt(y.length - 1) == "-") {
-                let splicedAnswer = y.slice(0, (y.length - 1));
-                let jsMathAnswer = y.concat(splicedAnswer);
-                y = eval(jsMathAnswer);
-                document.getElementById("display").innerHTML = eval(jsMathAnswer);
-
-            }
-        }
-    }
-
-    function reset() {
-        y = "";
-        document.getElementById("display").innerHTML = "0";
-        document.getElementById('ac').innerHTML = 'ac';
-    }
-
-    function plusMinus() {
-        let answer = eval(y);
-        y = answer * (-1);
-        document.getElementById("display").innerHTML = y;
-    }
-</script>
-
+ol {
+    font-size: xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  list-style-type:hiragana-iroha;
+}
+  </style>
+  <body>
+      <ol>
+          <li><a href="/html/calculator_Techgrounds_JS_assignment.html">JS Calculator</a></li>
+          <li><a href="/html/Rock_Paper_Scissors_TG_JS_assigment.html">JS Rock, Paper, Scissors Game</a></li>
+          <li><a href="/html/sudoku_Techgrounds_JS_Extra_assignment.html">JS Sudoku</a></li>
+          <li><a href="/html/pizzasite_html_css_and_images/PizzaSite_CSS.html">HTML and CSS Pizza site assignment</a></li>
+      </ol>
+    
+    
+    
+  </body>
 </html>

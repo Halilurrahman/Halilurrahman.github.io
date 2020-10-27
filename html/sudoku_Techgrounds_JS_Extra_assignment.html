@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .sudokuContainer {
+        display: flex;
+        flex-wrap: wrap;
+        width: 32rem;
+        height: 32rem;
+        border: solid 0.3rem rgb(0, 0, 0);
+        border-collapse: collapse;
+    }
+
+    .sudokuBox {
+        display: flex;
+        flex-wrap: wrap;
+        width: 10rem;
+        height: 10rem;
+        border: solid 0.33rem rgb(0, 0, 0);
+        border-collapse: collapse;
+    }
+
+    .sudokuTile {
+        width: 3.33rem;
+        height: 3.33rem;
+        border: solid 0.33rem rgb(0, 0, 0);
+        box-sizing: border-box;
+        border-collapse: collapse;
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div>
+        <div class="sudokuContainer">
+            <div class="sudokuBox">
+                <div class="sudokuTile box1 row1 col1" oninput="checkSudoku(this)" contenteditable="true" id="11"></div>
+                <div class="sudokuTile box1 row1 col2" oninput="checkSudoku(this)" contenteditable="true" id="12"></div>
+                <div class="sudokuTile box1 row1 col3" oninput="checkSudoku(this)" contenteditable="true" id="13">9</div>
+                <div class="sudokuTile box1 row2 col1" oninput="checkSudoku(this)" contenteditable="true" id="14"></div>
+                <div class="sudokuTile box1 row2 col2" oninput="checkSudoku(this)" contenteditable="true" id="15"></div>
+                <div class="sudokuTile box1 row2 col3" oninput="checkSudoku(this)" contenteditable="true" id="16">6</div>
+                <div class="sudokuTile box1 row3 col1" oninput="checkSudoku(this)" contenteditable="true" id="17">2</div>
+                <div class="sudokuTile box1 row3 col2" oninput="checkSudoku(this)" contenteditable="true" id="18">3</div>
+                <div class="sudokuTile box1 row3 col3" oninput="checkSudoku(this)" contenteditable="true" id="19"></div>
+            </div>
+            <div class="sudokuBox">
+                <div class="sudokuTile box2 row1 col4" oninput="checkSudoku(this)" contenteditable="true" id="21"></div>
+                <div class="sudokuTile box2 row1 col5" oninput="checkSudoku(this)" contenteditable="true" id="22"></div>
+                <div class="sudokuTile box2 row1 col6" oninput="checkSudoku(this)" contenteditable="true" id="23"></div>
+                <div class="sudokuTile box2 row2 col4" oninput="checkSudoku(this)" contenteditable="true" id="24">3</div>
+                <div class="sudokuTile box2 row2 col5" oninput="checkSudoku(this)" contenteditable="true" id="25">4</div>
+                <div class="sudokuTile box2 row2 col6" oninput="checkSudoku(this)" contenteditable="true" id="26"></div>
+                <div class="sudokuTile box2 row3 col4" oninput="checkSudoku(this)" contenteditable="true" id="27">5</div>
+                <div class="sudokuTile box2 row3 col5" oninput="checkSudoku(this)" contenteditable="true" id="28"></div>
+                <div class="sudokuTile box2 row3 col6" oninput="checkSudoku(this)" contenteditable="true" id="29"></div>
+            </div>
+            <div class="sudokuBox">
+                <div class="sudokuTile box3 row1 col7" oninput="checkSudoku(this)" contenteditable="true" id="31"></div>
+                <div class="sudokuTile box3 row1 col8" oninput="checkSudoku(this)" contenteditable="true" id="32"></div>
+                <div class="sudokuTile box3 row1 col9" oninput="checkSudoku(this)" contenteditable="true" id="33">6</div>
+                <div class="sudokuTile box3 row2 col7" oninput="checkSudoku(this)" contenteditable="true" id="34"></div>
+                <div class="sudokuTile box3 row2 col8" oninput="checkSudoku(this)" contenteditable="true" id="35">2</div>
+                <div class="sudokuTile box3 row2 col9" oninput="checkSudoku(this)" contenteditable="true" id="36">9</div>
+                <div class="sudokuTile box3 row3 col7" oninput="checkSudoku(this)" contenteditable="true" id="37">7</div>
+                <div class="sudokuTile box3 row3 col8" oninput="checkSudoku(this)" contenteditable="true" id="38"></div>
+                <div class="sudokuTile box3 row3 col9" oninput="checkSudoku(this)" contenteditable="true" id="39"></div>
+            </div>
+
+            <div class="sudokuBox">
+                <div class="sudokuTile box4 row4 col1" oninput="checkSudoku(this)" contenteditable="true" id="41"></div>
+                <div class="sudokuTile box4 row4 col2" oninput="checkSudoku(this)" contenteditable="true" id="42">6</div>
+                <div class="sudokuTile box4 row4 col3" oninput="checkSudoku(this)" contenteditable="true" id="43">7</div>
+                <div class="sudokuTile box4 row5 col1" oninput="checkSudoku(this)" contenteditable="true" id="44"></div>
+                <div class="sudokuTile box4 row5 col2" oninput="checkSudoku(this)" contenteditable="true" id="45">4</div>
+                <div class="sudokuTile box4 row5 col3" oninput="checkSudoku(this)" contenteditable="true" id="46"></div>
+                <div class="sudokuTile box4 row6 col1" oninput="checkSudoku(this)" contenteditable="true" id="47"></div>
+                <div class="sudokuTile box4 row6 col2" oninput="checkSudoku(this)" contenteditable="true" id="48"></div>
+                <div class="sudokuTile box4 row6 col3" oninput="checkSudoku(this)" contenteditable="true" id="49"></div>
+            </div>
+            <div class="sudokuBox">
+                <div class="sudokuTile box5 row4 col4" oninput="checkSudoku(this)" contenteditable="true" id="51"></div>
+                <div class="sudokuTile box5 row4 col5" oninput="checkSudoku(this)" contenteditable="true" id="52"></div>
+                <div class="sudokuTile box5 row4 col6" oninput="checkSudoku(this)" contenteditable="true" id="53"></div>
+                <div class="sudokuTile box5 row5 col4" oninput="checkSudoku(this)" contenteditable="true" id="54"></div>
+                <div class="sudokuTile box5 row5 col5" oninput="checkSudoku(this)" contenteditable="true" id="55">3</div>
+                <div class="sudokuTile box5 row5 col6" oninput="checkSudoku(this)" contenteditable="true" id="56"></div>
+                <div class="sudokuTile box5 row6 col4" oninput="checkSudoku(this)" contenteditable="true" id="57"></div>
+                <div class="sudokuTile box5 row6 col5" oninput="checkSudoku(this)" contenteditable="true" id="58"></div>
+                <div class="sudokuTile box5 row6 col6" oninput="checkSudoku(this)" contenteditable="true" id="59"></div>
+            </div>
+            <div class="sudokuBox">
+                <div class="sudokuTile box6 row4 col7" oninput="checkSudoku(this)" contenteditable="true" id="61"></div>
+                <div class="sudokuTile box6 row4 col8" oninput="checkSudoku(this)" contenteditable="true" id="62"></div>
+                <div class="sudokuTile box6 row4 col9" oninput="checkSudoku(this)" contenteditable="true" id="63"></div>
+                <div class="sudokuTile box6 row5 col7" oninput="checkSudoku(this)" contenteditable="true" id="64"></div>
+                <div class="sudokuTile box6 row5 col8" oninput="checkSudoku(this)" contenteditable="true" id="65">9</div>
+                <div class="sudokuTile box6 row5 col9" oninput="checkSudoku(this)" contenteditable="true" id="66"></div>
+                <div class="sudokuTile box6 row6 col7" oninput="checkSudoku(this)" contenteditable="true" id="67">6</div>
+                <div class="sudokuTile box6 row6 col8" oninput="checkSudoku(this)" contenteditable="true" id="68">8</div>
+                <div class="sudokuTile box6 row6 col9" oninput="checkSudoku(this)" contenteditable="true" id="69"></div>
+            </div>
+
+            <div class="sudokuBox">
+                <div class="sudokuTile box7 row7 col1" oninput="checkSudoku(this)" contenteditable="true" id="71"></div>
+                <div class="sudokuTile box7 row7 col2" oninput="checkSudoku(this)" contenteditable="true" id="72"></div>
+                <div class="sudokuTile box7 row7 col3" oninput="checkSudoku(this)" contenteditable="true" id="73">2</div>
+                <div class="sudokuTile box7 row8 col1" oninput="checkSudoku(this)" contenteditable="true" id="74">4</div>
+                <div class="sudokuTile box7 row8 col2" oninput="checkSudoku(this)" contenteditable="true" id="75">9</div>
+                <div class="sudokuTile box7 row8 col3" oninput="checkSudoku(this)" contenteditable="true" id="76"></div>
+                <div class="sudokuTile box7 row9 col1" oninput="checkSudoku(this)" contenteditable="true" id="77"></div>
+                <div class="sudokuTile box7 row9 col2" oninput="checkSudoku(this)" contenteditable="true" id="78">7</div>
+                <div class="sudokuTile box7 row9 col3" oninput="checkSudoku(this)" contenteditable="true" id="79"></div>
+            </div>
+            <div class="sudokuBox">
+                <div class="sudokuTile box8 row7 col4" oninput="checkSudoku(this)" contenteditable="true" id="81"></div>
+                <div class="sudokuTile box8 row7 col5" oninput="checkSudoku(this)" contenteditable="true" id="82"></div>
+                <div class="sudokuTile box8 row7 col6" oninput="checkSudoku(this)" contenteditable="true" id="83">1</div>
+                <div class="sudokuTile box8 row8 col4" oninput="checkSudoku(this)" contenteditable="true" id="84"></div>
+                <div class="sudokuTile box8 row8 col5" oninput="checkSudoku(this)" contenteditable="true" id="85">2</div>
+                <div class="sudokuTile box8 row8 col6" oninput="checkSudoku(this)" contenteditable="true" id="86">5</div>
+                <div class="sudokuTile box8 row9 col4" oninput="checkSudoku(this)" contenteditable="true" id="87"></div>
+                <div class="sudokuTile box8 row9 col5" oninput="checkSudoku(this)" contenteditable="true" id="88"></div>
+                <div class="sudokuTile box8 row9 col6" oninput="checkSudoku(this)" contenteditable="true" id="89"></div>
+            </div>
+            <div class="sudokuBox">
+                <div class="sudokuTile box9 row7 col7" oninput="checkSudoku(this)" contenteditable="true" id="91"></div>
+                <div class="sudokuTile box9 row7 col8" oninput="checkSudoku(this)" contenteditable="true" id="92">3</div>
+                <div class="sudokuTile box9 row7 col9" oninput="checkSudoku(this)" contenteditable="true" id="93">4</div>
+                <div class="sudokuTile box9 row8 col7" oninput="checkSudoku(this)" contenteditable="true" id="94">1</div>
+                <div class="sudokuTile box9 row8 col8" oninput="checkSudoku(this)" contenteditable="true" id="95"></div>
+                <div class="sudokuTile box9 row8 col9" oninput="checkSudoku(this)" contenteditable="true" id="96"></div>
+                <div class="sudokuTile box9 row9 col7" oninput="checkSudoku(this)" contenteditable="true" id="97">8</div>
+                <div class="sudokuTile box9 row9 col8" oninput="checkSudoku(this)" contenteditable="true" id="98"></div>
+                <div class="sudokuTile box9 row9 col9" oninput="checkSudoku(this)" contenteditable="true" id="99"></div>
+            </div>
+
+        </div>
+
+        <hr>
+        <button onclick="checkSudokuBoxes()">check sudoku</button>
+        <button onclick="clearSudokuTileBackgrounds()">clear error markers</button>
+
+
+
+</body>
+<script>
+    let row1 = document.getElementsByClassName("row1");
+    let row2 = document.getElementsByClassName("row2");
+    let row3 = document.getElementsByClassName("row3");
+    let row4 = document.getElementsByClassName("row4");
+    let row5 = document.getElementsByClassName("row5");
+    let row6 = document.getElementsByClassName("row6");
+    let row7 = document.getElementsByClassName("row7");
+    let row8 = document.getElementsByClassName("row8");
+    let row9 = document.getElementsByClassName("row9");
+
+    let col1 = document.getElementsByClassName("col1");
+    let col2 = document.getElementsByClassName("col2");
+    let col3 = document.getElementsByClassName("col3");
+    let col4 = document.getElementsByClassName("col4");
+    let col5 = document.getElementsByClassName("col5");
+    let col6 = document.getElementsByClassName("col6");
+    let col7 = document.getElementsByClassName("col7");
+    let col8 = document.getElementsByClassName("col8");
+    let col9 = document.getElementsByClassName("col9");
+
+    let box1 = document.getElementsByClassName("box1");
+    let box2 = document.getElementsByClassName("box2");
+    let box3 = document.getElementsByClassName("box3");
+    let box4 = document.getElementsByClassName("box4");
+    let box5 = document.getElementsByClassName("box5");
+    let box6 = document.getElementsByClassName("box6");
+    let box7 = document.getElementsByClassName("box7");
+    let box8 = document.getElementsByClassName("box8");
+    let box9 = document.getElementsByClassName("box9");
+    // console.log(document.getElementById("13").innerHTML.length);
+   
+
+    function checkSudokuBoxes() {
+
+        for (let i = 0; i < row1.length; i++) {
+            for (let y = 0; y < row1.length; y++) {
+                if (i != y) {
+                    // for (let k=1; k<=9; k++) {
+                    //     // let box = document.getElementsByClassName(`row${k}`);
+                    //     // checkBox(box[i], box[y], `row${k}`);
+                    // }
+                    checkBox(row1[i], row1[y], "row1");
+                    checkBox(row2[i], row2[y], "row2");
+                    checkBox(row3[i], row3[y], "row3");
+                    checkBox(row4[i], row4[y], "row4");
+                    checkBox(row5[i], row5[y], "row5");
+                    checkBox(row6[i], row6[y], "row6");
+                    checkBox(row7[i], row7[y], "row7");
+                    checkBox(row8[i], row8[y], "row8");
+                    checkBox(row9[i], row9[y], "row9");
+
+                    checkBox(col1[i], col1[y], "col1");
+                    checkBox(col2[i], col2[y], "col2");
+                    checkBox(col3[i], col3[y], "col3");
+                    checkBox(col4[i], col4[y], "col4");
+                    checkBox(col5[i], col5[y], "col5");
+                    checkBox(col6[i], col6[y], "col6");
+                    checkBox(col7[i], col7[y], "col7");
+                    checkBox(col8[i], col8[y], "col8");
+                    checkBox(col9[i], col9[y], "col9");
+
+                    checkBox(box1[i], box1[y], "box1");
+                    checkBox(box2[i], box2[y], "box2");
+                    checkBox(box3[i], box3[y], "box3");
+                    checkBox(box4[i], box4[y], "box4");
+                    checkBox(box5[i], box5[y], "box5");
+                    checkBox(box6[i], box6[y], "box6");
+                    checkBox(box7[i], box7[y], "box7");
+                    checkBox(box8[i], box8[y], "box8");
+                    checkBox(box9[i], box9[y], "box9");
+                }
+                // if (row1[i].innerHTML != "" && row1[y].innerHTML != "" && row1[i].innerHTML == row1[y].innerHTML && i != y) {
+                //     console.log(row1[i].innerHTML + " is dubbel");
+                //     var elements = document.getElementsByClassName('row1');
+                //     for (var m = 0; m < elements.length; m++) {
+                //         elements[m].style.backgroundColor = "red";
+                //     }
+
+                // }
+                // if (row2[i].innerHTML != "" && row2[y].innerHTML != "" && row2[i].innerHTML == row2[y].innerHTML && i != y) {
+                //     console.log(row2[i].innerHTML + " is dubbel");
+                //     var elements = document.getElementsByClassName('row2');
+                //     for (var m = 0; m < elements.length; m++) {
+                //         elements[m].style.backgroundColor = "red";
+                //     }
+
+                // }
+                // if (row3[i].innerHTML != "" && row3[y].innerHTML != "" && row3[i].innerHTML == row3[y].innerHTML && i != y) {
+                //     console.log(row3[i].innerHTML + " is dubbel");
+                //     var elements = document.getElementsByClassName('row3');
+                //     for (var m = 0; m < elements.length; m++) {
+                //         elements[m].style.backgroundColor = "red";
+                //     }
+
+                // }
+                if (box1[i].innerHTML != "" && box1[y].innerHTML != "" && box1[i].innerHTML == box1[y].innerHTML && i != y) {
+                    console.log(box1[i].innerHTML + " is dubbel");
+                    var elements = document.getElementsByClassName('box1');
+                    for (var m = 0; m < elements.length; m++) {
+                        elements[m].style.backgroundColor = "red";
+                    }
+
+                }
+                if (col1[i].innerHTML != "" && col1[y].innerHTML != "" && col1[i].innerHTML == col1[y].innerHTML && i != y) {
+                    console.log(col1[i].innerHTML + " is dubbel");
+                    var elements = document.getElementsByClassName('col1');
+                    for (var m = 0; m < elements.length; m++) {
+                        elements[m].style.backgroundColor = "red";
+                    }
+
+                }
+            }
+        }
+        
+      
+    }
+
+    function checkBox(box1, box2, className) {
+        if (box1.innerHTML != "" && box2.innerHTML != "" && box1.innerHTML == box2.innerHTML) {
+            console.log(box1.innerHTML + " is dubbel");
+            var elements = document.getElementsByClassName(className);
+            for (var m = 0; m < elements.length; m++) {
+                elements[m].style.backgroundColor = "red";
+            }
+        }
+    }
+
+    function clearSudokuTileBackgrounds(){
+        var elements = document.getElementsByClassName('sudokuTile');
+                    for (var s = 0; s < elements.length; s++) {
+                        elements[s].style.backgroundColor = "white";
+                    }
+    }
+    //  else {
+    //                             var elements = document.getElementsByClassName('row1');
+    //                             for (var m = 0; m < elements.length; m++) {
+    //                              elements[m].style.backgroundColor = "lightgreen";
+    //                              }
+    //                          }
+
+
+
+    // if(document.getElementById("11").innerHTML==document.getElementById("13").innerHTML||document.getElementById("13").innerHTML){
+    //     let x = document.getElementsByClassName("row1");
+    //     x[].style.backgroundColor= "red";
+    // }
+
+    // console.log(element.innerHTML);
+
+    // const sudokuArrayRow1=
+</script>
+
+</html>
