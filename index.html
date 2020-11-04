@@ -6,22 +6,51 @@
     <title>Document</title>
   </head>
   <style>
-
+body{
+  background: rgb(6,1,95);
+ background: linear-gradient(90deg, rgba(6,1,95,1) 40%, rgba(8,235,236,1) 86%, rgba(234,20,208,1) 95%);
+  width: 100%;
+  padding-left: 20px;
+}
 ol {
     font-size: xx-large;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   list-style-type:hiragana-iroha;
+  color: antiquewhite;
+}
+a{
+  color: antiquewhite;
 }
   </style>
-  <body>
+  <body id="body">
       <ol>
           <li><a href="/html/calculator_Techgrounds_JS_assignment.html">JS Calculator</a></li>
           <li><a href="/html/Rock_Paper_Scissors_TG_JS_assigment.html">JS Rock, Paper, Scissors Game</a></li>
           <li><a href="/html/sudoku_Techgrounds_JS_Extra_assignment.html">JS Sudoku</a></li>
-          <li><a href="/html/pizzasite_html_css_and_images/PizzaSite_CSS.html">HTML and CSS Pizza site assignment</a></li>
+          <li><a href="/html/pizzasite_html_css_and_images/PizzaSite_CSS.html">Responsive HTML and CSS Pizza site assignment</a></li>
       </ol>
     
     
     
   </body>
+  <script src="three.r119.min.js"></script>
+<script src="vanta.net.min.js"></script>
+<script>
+VANTA.NET({
+  el: "#body",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x10a15a,
+  backgroundColor: 0x2a0081,
+  points: 13.00,
+  maxDistance: 39.00,
+  spacing: 12.00
+});
+
+</script>
 </html>
